@@ -1,6 +1,6 @@
-# Google SSO — iosei.co, mstecnologia.med.br e i-rad.co
+# Google SSO — iosei.co, mstecnologia.med.br, i-rad.co e dealpro.com.br
 
-Os três domínios vêm de dois Google Workspaces: `iosei.co` e `mstecnologia.med.br` no mesmo Workspace, `i-rad.co` em outro. Um app OAuth **Internal** só autentica o Workspace dono do projeto. O consent screen deste client precisa ser **External**. Quem limita o login aos três domínios é o servidor, não o Google.
+Os três domínios vêm de dois Google Workspaces: `iosei.co` e `mstecnologia.med.br` no mesmo Workspace, `i-rad.co` em outro. `dealpro.com.br` é do parceiro DealPro e entra só por convite. Um app OAuth **Internal** só autentica o Workspace dono do projeto. O consent screen deste client precisa ser **External**. Quem limita o login aos domínios da lista é o servidor, não o Google.
 
 Não defina `ENTERPRISE_KEY`. O módulo de SSO deste fork não depende dela.
 
@@ -15,7 +15,7 @@ O provedor OIDC (`core."ssoIdentityProvider"`) também não tem coluna de domín
 `SSO_ALLOWED_EMAIL_DOMAINS` é uma lista separada por vírgula, só por variável de ambiente (`isEnvOnly`: o painel admin não altera). Vazia, o servidor aceita qualquer domínio — é o comportamento de desenvolvimento. Em produção o valor é exatamente:
 
 ```text
-iosei.co,mstecnologia.med.br,i-rad.co
+iosei.co,mstecnologia.med.br,i-rad.co,dealpro.com.br
 ```
 
 A comparação é o domínio inteiro depois do `@`, em minúsculas. `ana@iosei.co` passa. `ana@mail.iosei.co`, `ana@notiosei.co` e `ana@gmail.com` não passam.
