@@ -9,7 +9,7 @@ ENV_FILE="${ENV_FILE:-$ROOT/.env.production}"
 COMPOSE_FILE="$ROOT/packages/twenty-docker/docker-compose.prod.yml"
 RDS_CA_URL="https://truststore.pki.rds.amazonaws.com/global/global-bundle.pem"
 RDS_CA_FILE="$ROOT/rds-global-bundle.pem"
-EXPECTED_DOMAINS=$'i-rad.co\niosei.co\nmstecnologia.med.br'
+EXPECTED_DOMAINS=$'dealpro.com.br\ni-rad.co\niosei.co\nmstecnologia.med.br'
 
 die() {
   echo "erro: $*" >&2
@@ -145,7 +145,7 @@ validate_env() {
   local actual_domains
   actual_domains="$(normalized_domains "${SSO_ALLOWED_EMAIL_DOMAINS:-}")"
   [[ "$actual_domains" == "$EXPECTED_DOMAINS" ]] ||
-    die "SSO_ALLOWED_EMAIL_DOMAINS precisa ser exatamente iosei.co,mstecnologia.med.br,i-rad.co"
+    die "SSO_ALLOWED_EMAIL_DOMAINS precisa ser exatamente iosei.co,mstecnologia.med.br,i-rad.co,dealpro.com.br"
 
   echo "ambiente válido para ${CRM_DOMAIN} (imagem ${TAG})"
 }
